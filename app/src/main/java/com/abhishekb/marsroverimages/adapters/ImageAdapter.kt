@@ -1,14 +1,20 @@
 package com.abhishekb.marsroverimages.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.abhishekb.marsroverimages.MainActivity
+import com.abhishekb.marsroverimages.Photo
 import com.abhishekb.marsroverimages.R
+import com.abhishekb.marsroverimages.ResponseData
+import com.bumptech.glide.Glide
+import com.bumptech.glide.GlideContext
 import com.squareup.picasso.Picasso
 
-class ImageAdapter() :  RecyclerView.Adapter<ImageAdapter.MyViewHolder>(){
+class ImageAdapter(val context: Context, val imageList : List<Photo>) :  RecyclerView.Adapter<ImageAdapter.MyViewHolder>(){
 
 
     private lateinit var mListener: onItemClickListener
@@ -34,12 +40,16 @@ class ImageAdapter() :  RecyclerView.Adapter<ImageAdapter.MyViewHolder>(){
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-            holder.image.setImageResource(R.drawable.mars_image)
+            val currentImage = imageList[position].img_src
+            //holder.image.setImageResource(currentImage.img_src.toString().toInt())
+            Glide.with(context)
+                .load(currentImage)
+                .into(holder.image);
 
         }
 
         override fun getItemCount(): Int {
-            return 100
+            return imageList.size
         }
 
         class MyViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {

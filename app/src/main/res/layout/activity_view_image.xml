@@ -10,13 +10,14 @@
     <com.ortiz.touchview.TouchImageView
         android:id="@+id/mainImage"
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
         android:layout_height="0dp"
+        android:scaleType="center"
+        android:layout_margin="10dp"
+        android:src="@drawable/mars_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/backBtn"
-        android:src="@drawable/mars_image" />
+        app:layout_constraintTop_toBottomOf="@+id/backBtn" />
 
     <ImageView
         android:id="@+id/backBtn"
